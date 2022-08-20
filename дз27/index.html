@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>VALID_FORM</title>
+  </head>
+  <body>
+    <div class="form">
+      <form
+        class="form__body"
+        action="https://fe.it-academy.by/TestForm.php"
+        name="form"
+        novalidate
+      >
+        <div class="form__item">
+          <h2 class="form__title">
+            Для внесения вашего сайта в каталог, заполните форму:
+          </h2>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label">
+            <p class="form__label-title">Разработчики:</p>
+            <input
+              id="developers"
+              class="form__input"
+              type="text"
+              name="developers"
+            />
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label">
+            <p class="form__label-title">Название сайта:</p>
+            <input
+              class="form__input"
+              id="sitename"
+              type="text"
+              name="siteName"
+            />
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label">
+            <p class="form__label-title">URL сайта:</p>
+            <input
+              class="form__input url"
+              id="siteurl"
+              type="text"
+              name="siteURL"
+            />
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label">
+            <p class="form__label-title">Дата запуска сайта:</p>
+            <input
+              class="form__input date"
+              id="sitedate"
+              type="date"
+              name="siteDate"
+            />
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label">
+            <p class="form__label-title">Посетителей в сутки:</p>
+            <input
+              class="form__input visitors"
+              type="text"
+              name="siteVisitors"
+              id="visitors"
+            />
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label">
+            <p class="form__label-title">E-mail для связи:</p>
+            <input
+              class="form__input email"
+              type="text"
+              id="email"
+              name="siteEmail"
+            />
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label catalog">
+            <p class="form__label-title">Рубрика каталога:</p>
+            <select class="form__select" name="catalog">
+              <option class="form__select-option" value="health">
+                здоровье
+              </option>
+              <option class="form__select-option" value="home">
+                домашний уют
+              </option>
+              <option class="form__select-option" value="tech">
+                бытовая техника
+              </option>
+            </select>
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item form__item-placement">
+          <p class="form__label-title">Размещение:</p>
+          <input
+            class="form__input input-radio"
+            type="radio"
+            name="placement"
+            value="free"
+            id="free"
+          />
+          <span class="radio-span error-free"></span>
+          <label for="free">бесплатное</label>
+          <input
+            class="form__input input-radio"
+            type="radio"
+            name="placement"
+            value="pay"
+            id="pay"
+          />
+          <span class="radio-span"></span>
+          <label for="pay">платное</label>
+          <input
+            class="form__input input-radio"
+            type="radio"
+            name="placement"
+            value="vip"
+            id="vip"
+          />
+          <span class="radio-span"></span>
+          <label for="vip">VIP</label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label reviews">
+            <p class="form__label-title">Разрешить отзывы:</p>
+            <input
+              class="form__input input-checkbox"
+              type="checkbox"
+              name="checkbox"
+            />
+            <span class="checkbox-span"></span>
+          </label>
+        </div>
+        <!--/.form__item-->
+        <div class="form__item">
+          <label class="form__label textarea">
+            <p class="form__label-title">Описание сайта:</p>
+            <textarea class="form__textarea" name="textarea"></textarea>
+          </label>
+        </div>
+        <!--/.form__item-->
+        <input class="form__submit" type="submit" value="Опубликовать" />
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
