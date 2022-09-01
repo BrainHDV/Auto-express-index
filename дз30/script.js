@@ -23,8 +23,8 @@ for (let image of images) {
       function mouseMove(e) {
          e = e || window.event;
          
-         e.target.style.left = e.pageX - shiftX + 'px';
-         e.target.style.top = e.pageY - shiftY + 'px';
+         image.style.left = e.pageX - shiftX + 'px';
+         image.style.top = e.pageY - shiftY + 'px';
       }
    
       image.addEventListener('mouseup', mouseUp);
