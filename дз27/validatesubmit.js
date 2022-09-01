@@ -33,8 +33,9 @@ function formValidateSubmit(e) {
       formRemoveError(checkboxSpan);
       formRemoveError(formTextarea);
       developers.classList.remove('text-error');
-      input.classList.remove('error-num');
       siteName.classList.remove('text-error');
+      input.classList.remove('error-num');
+
       input.parentElement.classList.remove('url');
       input.parentElement.classList.remove('date');
       input.parentElement.classList.remove('error-num');
