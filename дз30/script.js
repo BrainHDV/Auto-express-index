@@ -3,13 +3,11 @@
 const images = document.querySelectorAll('img');
 
 for (let image of images) {
-
    
    image.addEventListener('mousedown', mouseDown);
    image.addEventListener('load', getCoords);
    image.addEventListener('mouseenter', mouseEnter);
    
-
    function getCoords(e) {
       e = e || window.event;
       let self = this;
@@ -27,6 +25,7 @@ for (let image of images) {
       let shiftY = e.clientY - self.getBoundingClientRect().top;
       
       self.style.cursor = 'grabbing';
+      self.style.zIndex = 100;
       
       
       document.addEventListener('mousemove', mouseMove);
@@ -34,9 +33,9 @@ for (let image of images) {
       function mouseMove(e) {
          e = e || window.event;
          
-         self.style.zIndex = 10;
          image.style.left = e.pageX - shiftX + 'px';
          image.style.top = e.pageY - shiftY + 'px';
+         
       }
       
       image.addEventListener('mouseup', mouseUp);
@@ -52,6 +51,7 @@ for (let image of images) {
       e = e || window.event;
       e.target.style.cursor = 'pointer';
    }
+   
    
    image.addEventListener('dragstart', e => e.preventDefault())
    
