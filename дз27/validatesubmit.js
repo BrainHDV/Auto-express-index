@@ -25,8 +25,24 @@ function formValidateSubmit(e) {
    const formTextarea = form.elements.textarea;
    const textareaValue = formTextarea.value;
 
+   if(textareaValue.length === 0) {
+      formAddError(formTextarea);
+      formTextarea.focus();
+      formTextarea.scrollIntoView();
+      e.preventDefault();
+   }
+
+   if(textareaValue.length >=1 && textareaValue.length < 50) {
+      formAddError(formTextarea);
+      formTextarea.focus();
+      formTextarea.scrollIntoView();
+      formTextarea.parentElement.classList.add('min');
+      e.preventDefault();
+   }
+
    for (let i = inputs.length-1; i > -1; i--) {
       let input = inputs[i];
+      
       formRemoveError(input);
       formRemoveError(select);
       formRemoveError(radioBtnSpan);
@@ -44,28 +60,35 @@ function formValidateSubmit(e) {
       radioBtnSpan.parentElement.classList.remove('free');
       formTextarea.parentElement.classList.remove('min');
 
+
       if(input.value === '') {
          formAddError(input);
          input.focus();
          input.scrollIntoView();
          e.preventDefault();
-      }
+      } 
 
       if(developersValue.length > 50) {
          developers.parentElement.classList.add('text-error');
          developers.classList.add('text-error');
+         developers.focus();
+         developers.scrollIntoView();
          e.preventDefault();
       } 
       
       if(siteNameValue.length > 50) {
          siteName.parentElement.classList.add('text-error');
          siteName.classList.add('text-error');
+         siteName.focus();
+         siteName.scrollIntoView();
          e.preventDefault();
       }
-
+   
       if(input.classList.contains('url') && input.value !== '') {
          if(urlTest(input)) {
             input.parentElement.classList.add('url');
+            input.focus();
+            input.scrollIntoView();
             formAddError(input);
             e.preventDefault();
          }
@@ -74,12 +97,16 @@ function formValidateSubmit(e) {
       if(siteDateValue < 2016 && input.classList.contains('date')) {
          input.parentElement.classList.add('date')
          formAddError(input);
+         input.focus();
+         input.scrollIntoView();
          e.preventDefault();
       }
       
       if(input.classList.contains('visitors') && isNaN(visitorsNum) && input.value !== '') {
          input.classList.add('error-num');
          input.parentElement.classList.add('error-num');
+         input.focus();
+         input.scrollIntoView();
          e.preventDefault();
       }
       
@@ -87,42 +114,38 @@ function formValidateSubmit(e) {
          if(emailTest(input)) {
             input.parentElement.classList.add('email');
             formAddError(input);
+            input.focus();
+            input.scrollIntoView();
             e.preventDefault();
          }
       }
-      
-      if(select.value === 'health') {
-         formAddError(select);
-         e.preventDefault();
-      }
-      
-      if(radioBtn.value === '') {
-         radioBtnSpan.parentElement.classList.add('error');
-         e.preventDefault();
-      }
-      
-      if(radioBtn.value === 'free') {
-         formAddError(radioBtnSpan);
-         radioBtnSpan.parentElement.classList.add('free');
-         e.preventDefault();
-      }
-
-      if(!checkbox.checked) {
-         formAddError(checkboxSpan);
-         e.preventDefault();
-      }
-
-      if(textareaValue.length === 0) {
-         formAddError(formTextarea);
-         e.preventDefault();
-      }
-      
-      if(textareaValue.length >=1 && textareaValue.length < 50) {
-         formAddError(formTextarea);
-         formTextarea.parentElement.classList.add('min');
-         e.preventDefault();
-      }
-      
    }   
+
+   if(select.value === 'health') {
+      formAddError(select);
+      e.preventDefault();
+   }
+   
+   if(radioBtn.value === '') {
+      radioBtnSpan.parentElement.classList.add('error');
+      e.preventDefault();
+   }
+   
+   if(radioBtn.value === 'free') {
+      formAddError(radioBtnSpan);
+      radioBtnSpan.parentElement.classList.add('free');
+      e.preventDefault();
+   }
+
+   if(!checkbox.checked) {
+      formAddError(checkboxSpan);
+      e.preventDefault();
+   }
+   
+   if(textareaValue.length === 0) {
+      formAddError(formTextarea);
+      e.preventDefault();
+   }
+
 
 }
