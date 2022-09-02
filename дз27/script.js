@@ -26,6 +26,7 @@
    const selection = form.elements.catalog;
    const radioBtnFree = document.getElementById('free');
    const radioBtnPay = document.getElementById('pay');
+   const radioBtnVip = document.getElementById('vip');
    const checkbox = form.elements.checkbox;
    const formTextarea = form.elements.textarea;
    
@@ -51,7 +52,8 @@
 
    selection.addEventListener('change', formValidSelect);
    radioBtnFree.addEventListener('focus', formValidRadio);
-   radioBtnPay.addEventListener('focus', formValidRadioPay);
+   radioBtnPay.addEventListener('change', formValidRadioPayVip);
+   radioBtnVip.addEventListener('change', formValidRadioPayVip);
    checkbox.addEventListener('change', formValidCheckbox);
 
    formTextarea.addEventListener('blur', formValidTextarea);
@@ -207,14 +209,21 @@ function formValidRadio(e) {
    
 }
 
-function formValidRadioPay(e) {
+function formValidRadioPayVip(e) {
    e = e || window.event;
    const radioSpanFree = document.querySelector('.error-free');
    const radioPay = document.getElementById('pay');
+   const radioVip = document.getElementById('vip');
    
    const payValue = radioPay.value;
+   const vipValue = radioVip.value;
 
    if(payValue === 'pay') {
+      formRemoveError(radioSpanFree);
+      radioSpanFree.parentElement.classList.remove('free');     
+   }
+
+   if(vipValue === 'vip') {
       formRemoveError(radioSpanFree);
       radioSpanFree.parentElement.classList.remove('free');     
    }

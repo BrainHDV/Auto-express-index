@@ -35,7 +35,6 @@ for (let image of images) {
          
          image.style.left = e.pageX - shiftX + 'px';
          image.style.top = e.pageY - shiftY + 'px';
-         
       }
       
       image.addEventListener('mouseup', mouseUp);
@@ -50,6 +49,7 @@ for (let image of images) {
    function mouseEnter(e) {
       e = e || window.event;
       e.target.style.cursor = 'pointer';
+      e.target.style.zIndex = 10;
    }
    
    
