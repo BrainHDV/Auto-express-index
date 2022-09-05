@@ -32,13 +32,7 @@ function formValidateSubmit(e) {
       e.preventDefault();
    }
 
-   if(textareaValue.length >=1 && textareaValue.length < 50) {
-      formAddError(formTextarea);
-      formTextarea.focus();
-      formTextarea.scrollIntoView();
-      formTextarea.parentElement.classList.add('min');
-      e.preventDefault();
-   }
+
 
    for (let i = inputs.length-1; i > -1; i--) {
       let input = inputs[i];
@@ -147,5 +141,12 @@ function formValidateSubmit(e) {
       e.preventDefault();
    }
 
+   if(textareaValue.length >=1 && textareaValue.length < 50) {
+      formAddError(formTextarea);
+      formTextarea.focus();
+      formTextarea.scrollIntoView();
+      formTextarea.parentElement.classList.add('min');
+      e.preventDefault();
+   }
 
 }

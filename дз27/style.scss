@@ -182,12 +182,13 @@ body {
 }
 
 .form__label.date.error::after {
-   content: 'Не позднее 2016 года';
-   right: -215px;
+   content: 'Не раньше 2016 года';
+   right: -210px;
 }
 
 .form__label.error.url::after {
    content: 'Введен не корректный URL адрес';
+   font-size: 12px;
    right: -323px;
 }
 
