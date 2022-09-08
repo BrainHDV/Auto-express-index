@@ -4,29 +4,43 @@ const images = document.querySelectorAll('img');
 
 for (let image of images) {
    
+   window.addEventListener('load', getCoords);
    image.addEventListener('mousedown', mouseDown);
-   image.addEventListener('load', getCoords);
    image.addEventListener('mouseenter', mouseEnter);
-   
+
+
    function getCoords(e) {
       e = e || window.event;
-      let self = this;
-      self.style.position = 'absolute';
-      self.style.left = Math.ceil(self.getBoundingClientRect().left) + 'px';
-      self.style.top = Math.ceil(self.getBoundingClientRect().top) + 'px'; 
+      
+      function getElementPos(elem) {
+         let elemCoord = elem.getBoundingClientRect();
+         console.log(elemCoord.left);
+         console.log(elemCoord.top);
+         
+         return {
+            top: elemCoord.top + window.pageYOffset,
+            left: elemCoord.left + window.pageXOffset
+         };
+      }
+      
+      let coords = getElementPos(image);
+      
+      // image.style.position = 'absolute';
+      image.style.top = coords.top + 'px';
+      image.style.left = coords.left + 'px';
+      
    }
    
    function mouseDown(e) {
       e = e || window.event;
       let self = this;
       
-      self.style.position = 'absolute';
       let shiftX = e.clientX - self.getBoundingClientRect().left; 
       let shiftY = e.clientY - self.getBoundingClientRect().top;
       
+      self.style.position = 'absolute';
       self.style.cursor = 'grabbing';
-      self.style.zIndex = 100;
-      
+      self.style.zIndex = 10;
       
       document.addEventListener('mousemove', mouseMove);
       
@@ -49,7 +63,6 @@ for (let image of images) {
    function mouseEnter(e) {
       e = e || window.event;
       e.target.style.cursor = 'pointer';
-      e.target.style.zIndex = 10;
    }
    
    
