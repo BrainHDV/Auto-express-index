@@ -2,35 +2,42 @@
 
 const images = document.querySelectorAll('img');
 
-for (let image of images) {
+window.addEventListener('load', getCoords);
    
-   window.addEventListener('load', getCoords);
-   image.addEventListener('mousedown', mouseDown);
-   image.addEventListener('mouseenter', mouseEnter);
-
-
-   function getCoords(e) {
-      e = e || window.event;
+function getCoords(e) {
+   e = e || window.event;
+   
+   function getElementPos(elem) {
+      let elemCoord = elem.getBoundingClientRect();
       
-      function getElementPos(elem) {
-         let elemCoord = elem.getBoundingClientRect();
-         console.log(elemCoord.left);
-         console.log(elemCoord.top);
-         
-         return {
+      return {
             top: elemCoord.top + window.pageYOffset,
             left: elemCoord.left + window.pageXOffset
          };
       }
       
-      let coords = getElementPos(image);
+      const coordsArr = [];
       
-      // image.style.position = 'absolute';
-      image.style.top = coords.top + 'px';
-      image.style.left = coords.left + 'px';
-      
+      images.forEach( image => {
+         let imgCoord = getElementPos(image);
+         coordsArr.push(imgCoord);
+         
+         for (let imageCoord of coordsArr) {
+            image.style.left = imageCoord.left + 'px';
+            image.style.top = imageCoord.top + 'px';
+            image.style.position = 'absolute'
+         }
+      })
+ 
    }
    
+   
+   
+for (let image of images) {
+   image.addEventListener('mousedown', mouseDown);
+   image.addEventListener('mouseenter', mouseEnter);
+
+
    function mouseDown(e) {
       e = e || window.event;
       let self = this;
@@ -59,15 +66,13 @@ for (let image of images) {
          e.target.style.cursor = 'grab';
       }
    }
-   
+
    function mouseEnter(e) {
       e = e || window.event;
       e.target.style.cursor = 'pointer';
    }
-   
-   
+
+
    image.addEventListener('dragstart', e => e.preventDefault())
-   
+
 }
-
-
