@@ -18,17 +18,20 @@ function getCoords(e) {
       
       const coordsArr = [];
       
-      images.forEach( image => {
+      for(let image of images) {
          let imgCoord = getElementPos(image);
          coordsArr.push(imgCoord);
+      }
+      
+      for(let image of images) {
+         image.style.position = 'absolute';
          
-         for (let imageCoord of coordsArr) {
-            image.style.left = imageCoord.left + 'px';
-            image.style.top = imageCoord.top + 'px';
-            image.style.position = 'absolute'
-         }
-      })
- 
+         coordsArr.forEach(item => {
+            image.style.top = item.top + 'px';
+            image.style.left = item.left + 'px';
+         })
+      }
+      
    }
    
    
