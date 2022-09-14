@@ -1,8 +1,9 @@
 'use strict';
 
 function dragDrop() {
-
+   
    const images = document.querySelectorAll('img');
+   let nextZIndex = 10;
    
    window.addEventListener('load', getCoords);
       
@@ -32,7 +33,7 @@ function dragDrop() {
             image.style.position = 'absolute';
             image.style.zIndex = index + 1;
          }); 
-
+         
          // for ( let i = 0; i < images.length; i++) {
          //    let image = images[i];
    
@@ -58,8 +59,8 @@ function dragDrop() {
          let shiftY = e.clientY - self.getBoundingClientRect().top;
          
          self.style.cursor = 'grabbing';
-
-         image.style.zIndex++;
+         self.style.zIndex = nextZIndex;
+         nextZIndex++;
          
          document.addEventListener('mousemove', mouseMove);
          
