@@ -24,15 +24,23 @@ function dragDrop() {
             let imgCoord = getElementPos(image);
             coordsArr.push(imgCoord);
          }
-         
-         for ( let i = 0; i < images.length; i++) {
-            let image = images[i];
-   
-            image.style.top = coordsArr[i].top + 'px';
-            image.style.left = coordsArr[i].left + 'px';
-            
+
+         images.forEach((image, index) => {
+            image.style.top = coordsArr[index].top + 'px';
+            image.style.left = coordsArr[index].left + 'px';
+
             image.style.position = 'absolute';
-         }
+            image.style.zIndex = index + 1;
+         }); 
+
+         // for ( let i = 0; i < images.length; i++) {
+         //    let image = images[i];
+   
+         //    image.style.top = coordsArr[i].top + 'px';
+         //    image.style.left = coordsArr[i].left + 'px';
+            
+         //    image.style.position = 'absolute';
+         // }
          
    }
       
@@ -40,7 +48,6 @@ function dragDrop() {
    
       image.addEventListener('mousedown', mouseDown);
       image.addEventListener('mouseenter', mouseEnter);
-      image.addEventListener('mousedown', changeIndex);
       image.addEventListener('dragstart', e => e.preventDefault())
    
       function mouseDown(e) {
@@ -50,9 +57,9 @@ function dragDrop() {
          let shiftX = e.clientX - self.getBoundingClientRect().left; 
          let shiftY = e.clientY - self.getBoundingClientRect().top;
          
-         self.style.position = 'absolute';
          self.style.cursor = 'grabbing';
-         
+
+         image.style.zIndex++;
          
          document.addEventListener('mousemove', mouseMove);
          
@@ -76,18 +83,7 @@ function dragDrop() {
          e = e || window.event;
          e.target.style.cursor = 'pointer';
       }
-   
-      function changeIndex(e) {
-         e = e || window.event;
-         let self = this;
-         
-         for( let i = 0; i < images.length; i++) {
-            let image = images[i];
-            image.style.zIndex = 10;       
-         }
-      
-         self.style.zIndex = 20;
-      }
+
    }
 
 }
