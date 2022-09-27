@@ -163,7 +163,7 @@ body {
 }
 
 .form__label.date.error::after {
-  content: "Не раньше 2016 годa";
+  content: "Не раньше 2016 года";
   right: -210px;
 }
 
