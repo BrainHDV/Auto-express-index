@@ -5,14 +5,14 @@ function buildClock() {
     // Радиус часов
     radius = clockDiametr / 2,
     //  Высота секундной стрелки относительно радиуса
-    secondArrowHeight = radius / 3,
+    secondArrowHeight = radius / 1.8,
     //  Высота минутной стрелки относительно радиуса
-    minuteArrowHeight = radius / 4,
+    minuteArrowHeight = radius / 2,
     //  Высота часовой стрелки относительно радиуса
-    hourArrowHeight = radius / 5;
+    hourArrowHeight = radius / 2.8;
 
   //  Часы получают заданные размеры. Выставляется высота стрелок.
-  clock.style.cssText = `display: flex; width:${radius}px; height:${radius}px`;
+  clock.style.cssText = `display: flex; width:${clockDiametr}px; height:${clockDiametr}px`;
   hourArrow.style.cssText = `height: ${hourArrowHeight}px`;
   minuteArrow.style.cssText = `height: ${minuteArrowHeight}px`;
   secondArrow.style.cssText = `height: ${secondArrowHeight}px`;
@@ -24,7 +24,7 @@ function buildClock() {
     numberDiv.textContent = i;
     numberDiv.classList.add("clock-number");
     clockDiametr < 450
-      ? ((numberDiv.style.cssText = "font-size: 8px"),
+      ? ((numberDiv.style.cssText = "font-size: 12px"),
         (hourArrow.style.width = 4 + "px"),
         (minuteArrow.style.width = 3 + "px"))
       : (numberDiv.style.cssText = "font-size: 16px");
@@ -40,7 +40,7 @@ function buildClock() {
     numberBgWidth = clockCenterX / 5,
     numberBgHeight = clockCenterY / 5,
     // Расстояние от центра до кружка с цифрой
-    radiusFromCenter = radius / 2.4;
+    radiusFromCenter = radius / 1.2;
 
   // В этой части кода мы высчитываем угол поворота цифр каждого часа
   // Если формат 12-часовой, то часовая стрелка каждый час будет двигаться на 30 градусов
@@ -71,11 +71,10 @@ function buildClock() {
 
   //   Вызываем функцию setTime чтобы СРАЗУ показывать время правильно
   //   Устанавливаем интервал одну секунду
-  setTime(timeFormat, hourDegree);
-  setInterval(setTime, 1000);
-
   //   При каждом обновлении выводим в консоль текущее время
+  setTime(timeFormat, hourDegree);
   setInterval(() => {
+    setTime();
     const currentTime = new Date(),
       hour = currentTime.getHours(),
       minutes = currentTime.getMinutes(),
