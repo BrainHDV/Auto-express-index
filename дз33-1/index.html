@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./scss/css/style.css" />
+    <title>CLOCK_SVG</title>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock__menu">
+        <h2 class="clock__menu-title">Генератор часов</h2>
+        <p class="clock__menu-text">Выберите формат</p>
+        <form class="clock__menu-form" name="menuForm">
+          <label class="clock__menu-label">
+            <input type="radio" name="format" value="12" />
+            <span>12 часов</span>
+          </label>
+          <label class="clock__menu-label">
+            <input type="radio" name="format" value="24" />
+            <span>24 часа</span>
+          </label>
+          <input
+            class="clock__menu-input input-text"
+            type="number"
+            placeholder="Введите диаметр часов"
+          />
+          <span class="input-error">От 200 до 800 пикселей*</span>
+          <input
+            class="clock__menu-input input-button"
+            type="submit"
+            value="Построить часы"
+          />
+        </form>
+      </div>
+      <svg class="clock__body" style="display: none">
+        <line stroke-linecap="round" stroke="#d3d3d3" class="hr" />
+        <line stroke-linecap="round" stroke="#d3d3d3" class="mn" />
+        <line stroke-linecap="round" stroke="red" class="sc" />
+        <circle r="5" fill="#d3d3d3" cx="50%" cy="50%" />
+      </svg>
+    </div>
+    <script src="js/supportFunc.js"></script>
+    <script src="js/setDateFunc.js"></script>
+    <script src="js/buildClockFunc.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
