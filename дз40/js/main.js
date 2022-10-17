@@ -2,10 +2,7 @@
 const form = document.querySelector(".clock__menu-form"),
   menu = document.querySelector(".clock__menu"),
   formInput = document.querySelector(".input-text"),
-  errorMessage = document.querySelector(".input-error"),
-  hourArrow = document.querySelector(".hr"),
-  minuteArrow = document.querySelector(".mn"),
-  secondArrow = document.querySelector(".sc");
+  errorMessage = document.querySelector(".input-error");
 
 // Хеш с настройками циферблата
 const settings = {
