@@ -32,7 +32,7 @@ export const ball = {
     this.y += this.speedY;
 
     // Стороны мяча
-    const rightSide = this.x + this.width - this.speedX;
+    const rightSide = this.x + this.width;
     const leftSide = this.x + this.speedX;
     const topSide = this.y;
     const bottomSide = this.y + this.height;
