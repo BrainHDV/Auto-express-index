@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TENNIS_DOM</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="pong">
+        <div class="pong__header">
+          <button class="start-button" id="start-button">Старт!</button>
+          <div class="score-points">
+            <span id="score-left">0</span>:<span id="score-right">0</span>
+          </div>
+        </div>
+        <div class="pong__body">
+          <div class="racket left-racket" id="left-racket"></div>
+          <div class="racket right-racket" id="right-racket"></div>
+          <div class="ball"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="index.js" type="module"></script>
+  </body>
+</html>
