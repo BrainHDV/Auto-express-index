@@ -40,7 +40,7 @@ export const ball = {
     // Столкновение с ракетками
     // Левая ракетка
     if (
-      leftSide <= racketLeft.x + racketLeft.width &&
+      leftSide <= racketLeft.x &&
       topSide <= racketLeft.y + racketLeft.height &&
       bottomSide >= racketLeft.y
     ) {
@@ -57,7 +57,7 @@ export const ball = {
     }
 
     // Right
-    if (rightSide >= field.width) {
+    if (rightSide > field.width) {
       // отсанавливаем шарик с помощью cancelAnimationFrame
       cancelAnimationFrame(animate);
       this.reset();
