@@ -1,14 +1,23 @@
 "use strict";
 import { ball } from "./modules/Ball.js";
+import { field } from "./modules/GameSet.js";
 import { racketLeft, racketRight } from "./modules/Racket.js";
 
+// Запускаем таймер сразу после загрузки страницы
+window.addEventListener("load", update);
+
 // Счетчик очков, левый\правый
-export const scoreLeft = document.getElementById("score-left");
-export const scoreRight = document.getElementById("score-right");
+export let scoreLeft = document.getElementById("score-left");
+export let scoreRight = document.getElementById("score-right");
+
+const scores = {
+  playerLeft: 0,
+  playerRight: 0,
+};
 
 // Кнопка для начала игры
 const startButton = document.getElementById("start-button");
-startButton.addEventListener("click", update);
+startButton.addEventListener("click", moveBall);
 
 // Инициализируем местоположение... левой и правой ракетки.
 racketLeft.update();
@@ -16,90 +25,55 @@ racketRight.update();
 // Инициализируем мяч
 ball.update();
 
-// Объявляем переменную для отмены вызова функции requestAnimationFrame
-export let animate;
 // Анимация мячика
 export function update() {
-  cancelAnimationFrame(animate);
-  animate = requestAnimationFrame(update);
+  racketLeft.move();
+  racketRight.move();
   ball.update();
+
+  requestAnimationFrame(update);
 }
 
-// Создаю id для остановки анимации ракетки
-let requestId;
-// Лучше способа сделать остановку анимации не придумал
-// поэтому написал функции для каждого направления
-function paddleUpLeft() {
-  requestId = undefined;
-  racketLeft.up();
-  start(paddleUpLeft);
-}
-
-function paddleDownLeft() {
-  requestId = undefined;
-  racketLeft.down();
-  start(paddleDownLeft);
-}
-
-function paddleUpRight() {
-  requestId = undefined;
-  racketRight.up();
-  start(paddleUpRight);
-}
-
-function paddleDownRight() {
-  requestId = undefined;
-  racketRight.down();
-  start(paddleDownRight);
-}
-
-function start(paddle) {
-  if (!requestId) {
-    requestId = requestAnimationFrame(paddle);
-  }
-}
-
-function stop() {
-  if (requestId) {
-    cancelAnimationFrame(requestId);
-    requestId = undefined;
-  }
+export function moveBall() {
+  ball.move();
 }
 
 // Ловим событие keydown&keyup и вешаем обработчик
 // для управления ракетками
 addEventListener("keydown", (e) => {
   e = e || window.event;
+  const speed = 4;
   switch (e.key) {
     case "Shift":
-      start(paddleUpLeft);
+      racketLeft.speedY = -speed;
       break;
     case "Control":
-      start(paddleDownLeft);
+      racketLeft.speedY = speed;
       break;
     case "ArrowUp":
-      start(paddleUpRight);
+      racketRight.speedY = -speed;
       break;
     case "ArrowDown":
-      start(paddleDownRight);
+      racketRight.speedY = speed;
       break;
   }
 });
 
 addEventListener("keyup", (e) => {
   e = e || window.event;
+  const speed = 0;
   switch (e.key) {
     case "Shift":
-      stop();
+      racketLeft.speedY = speed;
       break;
     case "Control":
-      stop();
+      racketLeft.speedY = speed;
       break;
     case "ArrowUp":
-      stop();
+      racketRight.speedY = speed;
       break;
     case "ArrowDown":
-      stop();
+      racketRight.speedY = speed;
       break;
   }
 });

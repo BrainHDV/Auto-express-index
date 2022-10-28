@@ -1,6 +1,6 @@
 import { field } from "./GameSet.js";
 import { racketLeft, racketRight } from "./Racket.js";
-import { animate, scoreLeft, scoreRight } from "../index.js";
+// import { scoreLeft, scoreRight, scoreL } from "../index.js";
 
 const centerX = field.width / 2 - 20;
 const centerY = field.height / 2 - 20;
@@ -10,10 +10,10 @@ export const ball = {
   y: centerY,
   width: 20,
   height: 20,
-  speedX: randomDirection(),
-  speedY: randomDirection(),
+  speedX: 0,
+  speedY: 0,
 
-  reset() {
+  move() {
     // после попадания в левую\правую сторону
     // перемещаем мячик в центр
     this.x = centerX;
@@ -21,6 +21,11 @@ export const ball = {
     // задаем направление осям
     this.speedX = randomDirection();
     this.speedY = randomDirection();
+  },
+
+  stop() {
+    this.speedX = 0;
+    this.speedY = 0;
   },
 
   update() {
@@ -57,19 +62,15 @@ export const ball = {
     }
 
     // Right
-    if (rightSide > field.width) {
-      // отсанавливаем шарик с помощью cancelAnimationFrame
-      cancelAnimationFrame(animate);
-      this.reset();
-      scoreLeft.textContent = parseInt(scoreLeft.textContent) + 1;
+    if (rightSide >= field.width) {
+      this.stop();
+      // scoreLeft.textContent = parseInt(scoreRight.textContent) + 1;
     }
 
     // Left
-    if (this.x < 0) {
-      // отсанавливаем шарик с помощью cancelAnimationFrame
-      cancelAnimationFrame(animate);
-      this.reset();
-      scoreRight.textContent = parseInt(scoreRight.textContent) + 1;
+    if (this.x <= 0) {
+      this.stop();
+      // scoreRight.textContent = parseInt(scoreRight.textContent) + 1;
     }
 
     // Top & Bottom
