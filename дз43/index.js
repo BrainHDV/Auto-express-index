@@ -1,41 +1,34 @@
 "use strict";
 import { ball } from "./modules/Ball.js";
-import { field } from "./modules/GameSet.js";
 import { racketLeft, racketRight } from "./modules/Racket.js";
 
 // Запускаем таймер сразу после загрузки страницы
-window.addEventListener("load", update);
+window.addEventListener("load", animate);
 
 // Счетчик очков, левый\правый
 export let scoreLeft = document.getElementById("score-left");
 export let scoreRight = document.getElementById("score-right");
 
-const scores = {
-  playerLeft: 0,
-  playerRight: 0,
-};
-
 // Кнопка для начала игры
 const startButton = document.getElementById("start-button");
-startButton.addEventListener("click", moveBall);
+startButton.addEventListener("click", start);
 
-// Инициализируем местоположение... левой и правой ракетки.
-racketLeft.update();
-racketRight.update();
-// Инициализируем мяч
-ball.update();
+// Начать играть
+function start() {
+  ball.loop();
+}
 
-// Анимация мячика
-export function update() {
+// Инициализация мячика и ракеток
+function init() {
   racketLeft.move();
   racketRight.move();
   ball.update();
-
-  requestAnimationFrame(update);
 }
 
-export function moveBall() {
-  ball.move();
+// Анимация
+export function animate() {
+  init();
+  requestAnimationFrame(animate);
 }
 
 // Ловим событие keydown&keyup и вешаем обработчик
