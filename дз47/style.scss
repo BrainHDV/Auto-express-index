@@ -1,0 +1,52 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pong__header {
+  display: flex;
+
+  font-size: 40px;
+  height: 80px;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #eaac8b;
+  position: relative;
+}
+
+.pong__btn {
+  font-size: 20px;
+}
+
+.start-btn {
+  cursor: pointer;
+}
+
+.pong__btn-text {
+  fill: rgb(69, 66, 66);
+  text-anchor: middle;
+  alignment-baseline: middle;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pong__score {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  user-select: none;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TENNIS_SVG</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="pong">
+        <div class="pong__header">
+          <svg
+            class="pong__btn"
+            width="100"
+            height="50"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="100" height="50" fill="#c9cba3" class="start-btn" />
+            <text x="50" y="25" class="pong__btn-text">Старт!</text>
+          </svg>
+          <div class="pong__score">
+            <span class="player-left">0</span>
+            :
+            <span class="player-right">0</span>
+          </div>
+        </div>
+        <svg
+          class="pong__body"
+          width="800"
+          height="600"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect class="field" fill="#ffe1a8" />
+          <!-- <rect class="paddle-left" width="10" height="80" fill="#c9cba3" />
+          <rect
+            class="paddle-right"
+            x="20"
+            width="10"
+            height="80"
+            fill="#e26d5c"
+          /> -->
+          <!-- <circle class="ball" cx="50" cy="50" r="10" fill="#f94144" /> -->
+        </svg>
+      </div>
+    </div>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
