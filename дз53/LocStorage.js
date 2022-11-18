@@ -9,7 +9,6 @@ export class LocStorageClass {
   addValue(key, value) {
     this.storage[key] = value;
     localStorage.setItem(this.localStorageKey, JSON.stringify(this.storage));
-    console.log(this.storage);
   }
 
   getValue(key) {
