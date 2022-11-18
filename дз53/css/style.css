@@ -1,0 +1,39 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 600px 600px;
+  place-items: center;
+  justify-content: center;
+  background-color: #eee;
+  padding: 20px;
+}
+
+.drinks, .dishes {
+  display: flex;
+  flex-direction: column;
+}
+
+.drink__button, .dishes__button {
+  max-width: 500px;
+  font-size: 25px;
+  flex-basis: 150px;
+  padding: 15px;
+  border: 2px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.drink__button:hover, .dishes__button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.drink__button:not(:last-child), .dishes__button:not(:last-child) {
+  margin-bottom: 30px;
+}
