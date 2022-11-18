@@ -1,58 +1,35 @@
 export class LocStorageClass {
   constructor(localStorageKey) {
     this.localStorageKey = localStorageKey;
+    this.storage = JSON.parse(localStorage.getItem(this.localStorageKey)) || {};
   }
 
-  storage = [];
+  storage = {};
 
   addValue(key, value) {
-    const item = {
-      key,
-      value,
-    };
-    this.storage.push(item);
+    this.storage[key] = value;
     localStorage.setItem(this.localStorageKey, JSON.stringify(this.storage));
     console.log(this.storage);
   }
 
   getValue(key) {
-    this.storage = JSON.parse(localStorage.getItem(this.localStorageKey)) || [];
-
-    let result;
-    this.storage.forEach((item) => {
-      if (key === item.key) {
-        result = item.value;
-      }
-    });
-    return result;
+    if (key in this.storage) {
+      return this.storage[key];
+    }
   }
 
   deleteValue(key) {
-    this.storage = JSON.parse(localStorage.getItem(this.localStorageKey)) || [];
-
-    let deleted;
-    this.storage.forEach((item, index) => {
-      if (key === item.key) {
-        this.storage.splice(index, 1);
-        localStorage.setItem(
-          this.localStorageKey,
-          JSON.stringify(this.storage)
-        );
-        deleted = true;
-      } else {
-        deleted = false;
-      }
-    });
-    return deleted;
+    if (key in this.storage) {
+      delete this.storage[key];
+      localStorage.setItem(this.localStorageKey, JSON.stringify(this.storage));
+      return true;
+    } else {
+      return false;
+    }
   }
 
   getKeys() {
-    this.storage = JSON.parse(localStorage.getItem(this.localStorageKey)) || [];
-
-    let keys = [];
-    this.storage.forEach((item) => keys.push(item.key));
-
-    return keys;
+    return Object.keys(this.storage);
   }
 }
 
