@@ -37,24 +37,14 @@ body {
 }
 
 .start-button {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   margin-left: 30px;
-  padding: 10px 40px;
-  border-radius: 25px;
-  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
   outline: none;
-  transition: all .3s linear;
 }
 
-.start-button:hover {
-  padding: 10px 30px;
-  cursor: pointer;
-}
-.start-button:active {
-  background-color: #EBDFD5;
-}
- 
 .pong__body {
   height: calc(100% - 80px);
   background-color: #F07935;

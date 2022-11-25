@@ -84,9 +84,6 @@ function buildClock() {
       ? (hoursArrowDeg = (Math.PI / 6) * hours)
       : (hoursArrowDeg = (Math.PI / 12) * hours);
 
-    // подогнать размеры при измен диаметра, может написать функцию
-    // цвета поменять
-
     const minutesArrowDeg = (Math.PI / 30) * minutes;
     const secondsArrowDeg = (seconds * Math.PI) / 30;
 
