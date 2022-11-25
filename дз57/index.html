@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>CLOCK_MVC</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="clock__body">
+        <div class="time">
+          <button class="btn btn--stop" type="button">стоп</button>
+          <button class="btn btn--start" type="button">старт</button>
+          Минск (GMT+3)
+        </div>
+        <div class="hr"></div>
+        <div class="mn"></div>
+        <div class="sc"></div>
+      </div>
+    </div>
+    <script src="./modules/Clock.js"></script>
+    <script src="./modules/ClockViewDOM.js"></script>
+    <script src="./modules/ClockControllerButtons.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

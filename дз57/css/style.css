@@ -1,0 +1,136 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap");
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+html,
+body {
+  font-size: 18px;
+  height: 100%;
+  line-height: 2.2;
+  font-family: "Montserrat", sans-serif;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.clock__body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 40px 0px rgba(34, 60, 80, 0.3);
+  border-radius: 50%;
+  position: relative;
+}
+.clock__body::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  z-index: 1000;
+}
+
+.hr,
+.mn,
+.sc {
+  display: flex;
+  position: absolute;
+  bottom: 50%;
+  transform-origin: bottom;
+  transform: rotate(0deg);
+  z-index: 500;
+}
+
+.hr {
+  width: 6px;
+  height: 90px;
+  background-color: #d3d3d3;
+  border-radius: 6px 6px 0 0;
+}
+
+.mn {
+  width: 4px;
+  height: 120px;
+  background-color: #d3d3d3;
+  border-radius: 6px 6px 0 0;
+}
+
+.sc {
+  width: 2px;
+  height: 160px;
+  background-color: red;
+  border-radius: 6px 6px 0 0;
+}
+
+.clock-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(70, 69, 69);
+  font-size: 16px;
+  width: 50px;
+  height: 50px;
+  background-color: #d3d3d3;
+  border-radius: 50%;
+  font-weight: 500;
+  position: absolute;
+  z-index: 10;
+}
+
+.time {
+  position: absolute;
+  top: 0;
+  left: -250px;
+  padding: 0 15px;
+}
+
+.btn {
+  width: 80px;
+  height: 40px;
+  font-size: 15px;
+  font-family: "Montserrat", sans-serif;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.3s linear;
+}
+.btn:hover {
+  background-color: #d7d7d7;
+}
+.btn:active {
+  background-color: #bdbdbd;
+}
