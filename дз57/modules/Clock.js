@@ -8,26 +8,20 @@ class Clock {
       clockView = view;
     };
 
-    this.start = function () {
+    this.updateView = function () {
       if (clockView) clockView.update();
+    };
+
+    this.start = function () {
+      this.updateView();
+      time = setInterval(() => {
+        clockView.update();
+      }, 1000);
     };
 
     this.stop = function () {
       clearInterval(time);
       time = null;
-    };
-
-    this.time = function (hourArrow, minuteArrow, secondArrow) {
-      const secDeg = 6;
-      const hourDeg = 30;
-      const timeFormat = 12;
-      const currentDate = new Date(),
-        seconds = currentDate.getSeconds() * secDeg,
-        minutes = currentDate.getMinutes() * secDeg,
-        hours = currentDate.getHours() * hourDeg;
-      hourArrow.style.transform = `rotate(${hours + minutes / timeFormat}deg)`;
-      minuteArrow.style.transform = `rotate(${minutes}deg)`;
-      secondArrow.style.transform = `rotate(${seconds}deg)`;
     };
   }
 }

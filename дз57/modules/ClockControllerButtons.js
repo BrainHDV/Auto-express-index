@@ -1,7 +1,6 @@
 class ClockControllerButtons {
   constructor() {
     let clockModel = null; // с какой моделью работаем
-
     let clockField = null; // внутри какого тега наша вёрстка
 
     this.start = function (model, field) {

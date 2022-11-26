@@ -1,7 +1,7 @@
 class ClockViewDOM {
   constructor() {
-    let clockModel = null; // с какой моделью работаем
     const clockFaceDiametr = 400;
+    let clockModel = null; // с какой моделью работаем, но я с ней не работаю, пока
     let clockField = null; // внутри какого тега наша вёрстка
 
     let hourArrow = null; // часовая стрелка
@@ -56,10 +56,16 @@ class ClockViewDOM {
     };
 
     this.update = function () {
-      clockModel.time(hourArrow, minuteArrow, secondArrow);
-      time = setInterval(() => {
-        clockModel.time(hourArrow, minuteArrow, secondArrow);
-      }, 1000);
+      const secDeg = 6;
+      const hourDeg = 30;
+      const timeFormat = 12;
+      const currentDate = new Date(),
+        seconds = currentDate.getSeconds() * secDeg,
+        minutes = currentDate.getMinutes() * secDeg,
+        hours = currentDate.getHours() * hourDeg;
+      hourArrow.style.transform = `rotate(${hours + minutes / timeFormat}deg)`;
+      minuteArrow.style.transform = `rotate(${minutes}deg)`;
+      secondArrow.style.transform = `rotate(${seconds}deg)`;
     };
   }
 }
