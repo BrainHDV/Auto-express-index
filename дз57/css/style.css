@@ -44,6 +44,11 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  gap: 25px;
+}
+
+.box {
+  margin: 0 15px;
 }
 
 .clock__body {
@@ -77,21 +82,21 @@ body {
 
 .hr {
   width: 6px;
-  height: 90px;
+  height: 60px;
   background-color: #d3d3d3;
   border-radius: 6px 6px 0 0;
 }
 
 .mn {
   width: 4px;
-  height: 120px;
+  height: 100px;
   background-color: #d3d3d3;
   border-radius: 6px 6px 0 0;
 }
 
 .sc {
   width: 2px;
-  height: 160px;
+  height: 120px;
   background-color: red;
   border-radius: 6px 6px 0 0;
 }
@@ -112,15 +117,15 @@ body {
 }
 
 .time {
+  font-size: 14px;
   position: absolute;
-  top: 0;
-  left: -250px;
-  padding: 0 15px;
+  top: -50px;
+  left: 0;
 }
 
 .btn {
-  width: 80px;
-  height: 40px;
+  width: 65px;
+  height: 35px;
   font-size: 15px;
   font-family: "Montserrat", sans-serif;
   border: none;

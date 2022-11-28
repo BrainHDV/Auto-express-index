@@ -1,6 +1,8 @@
 class ClockViewDOM {
   constructor() {
-    const clockFaceDiametr = 400;
+    const clockFaceDiametr = 350;
+    const radius = clockFaceDiametr / 2;
+    const timeFormat = 12;
     let clockModel = null; // с какой моделью работаем, но я с ней не работаю, пока
     let clockField = null; // внутри какого тега наша вёрстка
 
@@ -18,12 +20,28 @@ class ClockViewDOM {
       minuteArrow = clockField.querySelector(".mn");
       secondArrow = clockField.querySelector(".sc");
 
+      // устанавливаем размер стрелок
+      const secondArrowHeight = radius / 1.3,
+        //  Высота минутной стрелки относительно радиуса
+        minuteArrowHeight = radius / 1.6,
+        //  Высота часовой стрелки относительно радиуса
+        hourArrowHeight = radius / 2.2;
+
+      //  Инициализация высоты стрелок.
+      hourArrow.style.cssText = `height: ${hourArrowHeight}px`;
+      minuteArrow.style.cssText = `height: ${minuteArrowHeight}px`;
+      secondArrow.style.cssText = `height: ${secondArrowHeight}px`;
+
       // инициализация цифр и фона
-      for (let i = 1; i <= 12; i++) {
+      for (let i = 1; i <= timeFormat; i++) {
         const numberDiv = document.createElement("div");
         numberDiv.textContent = i;
         numberDiv.classList.add("clock-number");
-
+        clockFaceDiametr < 450
+          ? ((numberDiv.style.cssText = "font-size: 13px"),
+            (hourArrow.style.width = 4 + "px"),
+            (minuteArrow.style.width = 3 + "px"))
+          : (numberDiv.style.cssText = "font-size: 16px");
         clockField.appendChild(numberDiv);
       }
 
@@ -37,8 +55,8 @@ class ClockViewDOM {
         // Расстояние от центра до кружка с цифрой
         radiusFromCenter = clockFaceDiametr / 2 / 1.2;
 
-      let step = (2 * Math.PI) / numbers.length;
       let angle = (parseFloat(30) / 180) * Math.PI;
+      let step = (Math.PI * 2) / timeFormat;
 
       for (let num = 0; num < numbers.length; num++) {
         let number = numbers[num];
@@ -59,13 +77,14 @@ class ClockViewDOM {
       const secDeg = 6;
       const hourDeg = 30;
       const timeFormat = 12;
-      const currentDate = new Date(),
+      const currentDate = clockModel.timeZoneCalc(),
         seconds = currentDate.getSeconds() * secDeg,
         minutes = currentDate.getMinutes() * secDeg,
         hours = currentDate.getHours() * hourDeg;
       hourArrow.style.transform = `rotate(${hours + minutes / timeFormat}deg)`;
       minuteArrow.style.transform = `rotate(${minutes}deg)`;
       secondArrow.style.transform = `rotate(${seconds}deg)`;
+      setTimeout(this.update, 1020 - currentDate.getMilliseconds());
     };
   }
 }
