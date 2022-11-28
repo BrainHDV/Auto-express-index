@@ -6,12 +6,12 @@ const clockViewNY = new ClockViewDOM();
 const clockControllerNY = new ClockControllerButtons();
 
 // указываем компонентам, в каком DOM им работать
-const clockBody1 = document.querySelector("#clock-DOM1");
+const clockBodyNY = document.querySelector("#clock-DOM1");
 
 // увязываем компоненты друг с другом
 clockModelNY.init(clockViewNY);
-clockViewNY.start(clockModelNY, clockBody1);
-clockControllerNY.start(clockModelNY, clockBody1);
+clockViewNY.start(clockModelNY, clockBodyNY);
+clockControllerNY.start(clockModelNY, clockBodyNY);
 
 // инициируем первичное отображение Model во View
 clockModelNY.start();
@@ -22,12 +22,12 @@ const clockViewMinsk = new ClockViewDOM();
 const clockControllerMinsk = new ClockControllerButtons();
 
 // указываем компонентам, в каком DOM им работать
-const clockBody2 = document.querySelector("#clock-DOM2");
+const clockBodyMinsk = document.querySelector("#clock-DOM2");
 
 // увязываем компоненты друг с другом
 clockModelMinsk.init(clockViewMinsk);
-clockViewMinsk.start(clockModelMinsk, clockBody2);
-clockControllerMinsk.start(clockModelMinsk, clockBody2);
+clockViewMinsk.start(clockModelMinsk, clockBodyMinsk);
+clockControllerMinsk.start(clockModelMinsk, clockBodyMinsk);
 
 // инициируем первичное отображение Model во View
 clockModelMinsk.start();
