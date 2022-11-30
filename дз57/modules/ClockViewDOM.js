@@ -21,7 +21,7 @@ class ClockViewDOM {
       secondArrow = clockField.querySelector(".sc");
 
       // устанавливаем размер стрелок
-      const secondArrowHeight = radius / 1.3,
+      const secondArrowHeight = radius / 1.4,
         //  Высота минутной стрелки относительно радиуса
         minuteArrowHeight = radius / 1.6,
         //  Высота часовой стрелки относительно радиуса

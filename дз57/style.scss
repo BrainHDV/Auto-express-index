@@ -42,16 +42,19 @@ body {
 
 .container {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
   height: 100vh;
-  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 15px;
 }
 
 .box {
   margin: 0 15px;
+  position: relative;
 }
-
 
 //-------------CLOCK STYLES----------------//
 
@@ -75,6 +78,16 @@ body {
     border-radius: 50%;
     z-index: 1000;
   }
+
+  &.no-dot {
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.no-shadow {
+  box-shadow: none;
 }
 
 .hr,
@@ -138,6 +151,10 @@ body {
   left: 0;
 }
 
+.time-svg1, .time-svg2 {
+  top: -45px;
+}
+
 .btn {
   width: 65px;
   height: 35px;
@@ -157,4 +174,54 @@ body {
   &:active {
     background-color: darken(#f0f0f0, 20);
   }
+}
+
+//-------------CLOCK SVG----------------//
+
+.clock__body-svg {
+  overflow: visible;
+}
+
+.clock__body-svg .hour,
+.clock__body-svg .minute,
+.clock__body-svg .second {
+  position: absolute;
+  z-index: 20;
+}
+
+.clock__body-svg .hr,
+.clock__body-svg .mn,
+.clock__body-svg .sc {
+  display: flex;
+  position: absolute;
+  bottom: 50%;
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+
+.clock__body-svg .hr {
+  width: 6px;
+  background-color: #d3d3d3;
+  border-radius: 6px 6px 0 0;
+}
+
+.clock__body-svg .mn {
+  width: 4px;
+  background-color: #d3d3d3;
+  border-radius: 6px 6px 0 0;
+}
+
+.clock__body-svg .sc {
+  width: 2px;
+  background-color: red;
+  border-radius: 6px 6px 0 0;
+}
+
+
+//----------NUMBER STYLES------------//
+
+.clock__body-svg .clock-text {
+  font-weight: 500;
+  text-anchor: middle;
+  alignment-baseline: middle;
 }

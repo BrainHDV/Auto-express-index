@@ -1,3 +1,5 @@
+//------------------------------DOM-----------------------------------
+
 // настройка, инициализация
 
 // создаём все три компонента
@@ -16,18 +18,67 @@ clockControllerNY.start(clockModelNY, clockBodyNY);
 // инициируем первичное отображение Model во View
 clockModelNY.start();
 
-// создаём все три компонента
 const clockModelMinsk = new Clock("GMT+3");
 const clockViewMinsk = new ClockViewDOM();
 const clockControllerMinsk = new ClockControllerButtons();
 
-// указываем компонентам, в каком DOM им работать
 const clockBodyMinsk = document.querySelector("#clock-DOM2");
 
-// увязываем компоненты друг с другом
 clockModelMinsk.init(clockViewMinsk);
 clockViewMinsk.start(clockModelMinsk, clockBodyMinsk);
 clockControllerMinsk.start(clockModelMinsk, clockBodyMinsk);
 
-// инициируем первичное отображение Model во View
 clockModelMinsk.start();
+
+//------------------------------SVG-----------------------------------
+
+const clockModelBerlin = new Clock("GMT+1");
+const clockViewBerlin = new ClockViewSVG();
+const clockControllerBerlin = new ClockControllerButtons();
+
+const clockBodyBerlin = document.querySelector("#clock-SVG1");
+const clockBodyBerlin1 = document.querySelector(".time-svg1");
+
+clockModelBerlin.init(clockViewBerlin);
+clockViewBerlin.start(clockModelBerlin, clockBodyBerlin);
+clockControllerBerlin.start(clockModelBerlin, clockBodyBerlin1);
+
+clockModelBerlin.start();
+const clockModelTokyo = new Clock("GMT+9");
+const clockViewTokyo = new ClockViewSVG();
+const clockControllerTokyo = new ClockControllerButtons();
+
+const clockBodyTokyo = document.querySelector("#clock-SVG2");
+const clockBodyTokyo1 = document.querySelector(".time-svg2");
+
+clockModelTokyo.init(clockViewTokyo);
+clockViewTokyo.start(clockModelTokyo, clockBodyTokyo);
+clockControllerTokyo.start(clockModelTokyo, clockBodyTokyo1);
+
+clockModelTokyo.start();
+
+//------------------------------CANVAS--------------------------------
+
+const clockModelLondon = new Clock("GMT");
+const clockViewLondon = new ClockViewCanvas();
+const clockControllerLondon = new ClockControllerButtons();
+
+const clockBodyLondon = document.querySelector("#clock-CANV1");
+
+clockModelLondon.init(clockViewLondon);
+clockViewLondon.start(clockModelLondon, clockBodyLondon);
+clockControllerLondon.start(clockModelLondon, clockBodyLondon);
+
+clockModelLondon.start();
+
+const clockModelVladik = new Clock("GMT+10");
+const clockViewVladik = new ClockViewCanvas();
+const clockControllerVladik = new ClockControllerButtons();
+
+const clockBodyVladik = document.querySelector("#clock-CANV2");
+
+clockModelVladik.init(clockViewVladik);
+clockViewVladik.start(clockModelVladik, clockBodyVladik);
+clockControllerVladik.start(clockModelVladik, clockBodyVladik);
+
+clockModelVladik.start();
