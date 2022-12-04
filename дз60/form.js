@@ -21,6 +21,7 @@ function loadData(url) {
   $.ajax(url, {
     type: "GET",
     dataType: "json",
+    async: false,
     success: dataLoaded,
     error: errorHandler,
   });
