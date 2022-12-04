@@ -29,9 +29,8 @@ function loadData(url) {
 
 function dataLoaded(data) {
   dataArr.push(data);
-
-  for (let i = 0; i < dataArr.length; i++) {
-    if (dataArr.length === links.length) {
+  if (dataArr.length === links.length) {
+    for (let i = 0; i < dataArr.length; i++) {
       formFunc(dataArr[i], formsArr[i]);
     }
   }
