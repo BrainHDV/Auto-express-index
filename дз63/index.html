@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>DRINKS_AJAX_STORAGE</title>
+  </head>
+  <body>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #eee;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .drinks {
+        display: flex;
+        flex-direction: column;
+      }
+
+      [class^="drink_"] {
+        max-width: 500px;
+        font-size: 25px;
+        flex-basis: 90px;
+
+        border: 2px solid #000;
+        border-radius: 10px;
+        cursor: pointer;
+
+        transition: 0.3s linear;
+      }
+
+      [class^="drink_"]:hover {
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+
+      [class^="drink_"]:not(:last-child) {
+        margin-bottom: 30px;
+      }
+    </style>
+
+    <div class="drinks">
+      <input
+        class="drink_button"
+        type="button"
+        value="Ввод информации о напитке"
+        onclick="userAddDrink();"
+      />
+      <input
+        class="drink_button"
+        type="button"
+        value="Получение информации о напитке"
+        onclick="getDrinkInfo();"
+      />
+      <input
+        class="drink_button"
+        type="button"
+        value="Удаление информации о напитке"
+        onclick="deleteDrinkInfo();"
+      />
+      <input
+        class="drink_button"
+        type="button"
+        value="Перечень всех напитков"
+        onclick="getDrinks();"
+      />
+    </div>
+    <script src="https://fe.it-academy.by/JQ/jquery.js"></script>
+    <script src="AJAXStorage.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
