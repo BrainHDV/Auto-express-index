@@ -50,7 +50,12 @@ function readInfo() {
     },
     success: readReady,
     error: errorHandler,
+    complete: complete,
   });
+}
+
+function complete() {
+  document.querySelector(".loading").style.display = "none";
 }
 
 function readReady(data) {
@@ -62,6 +67,7 @@ function readReady(data) {
 
 function getLockInfo() {
   updatePassword = Math.random();
+
   $.ajax({
     url: ajaxHandleScript,
     type: "POST",
@@ -78,6 +84,7 @@ function getLockInfo() {
 }
 
 function updateData(data) {
+  document.querySelector(".loading").style.display = "block";
   if (data.error != undefined) alert(data.error);
 
   $.ajax({
@@ -93,6 +100,7 @@ function updateData(data) {
     },
     success: updateReady,
     error: errorHandler,
+    complete: complete,
   });
 }
 

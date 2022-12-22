@@ -1,0 +1,90 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  background-color: #eee;
+  text-align: center;
+  padding: 20px;
+}
+
+.drinks {
+  display: flex;
+  flex-direction: column;
+}
+
+[class^="drink_"] {
+  max-width: 500px;
+  font-size: 25px;
+  flex-basis: 90px;
+
+  border: 2px solid #000;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: 0.3s linear;
+}
+
+[class^="drink_"]:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+[class^="drink_"]:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+
+  background-color: rgba(210, 207, 207, 0.8);
+}
+
+.loading::after {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+
+  background-image: url("../loader.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* .loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%,-50%);
+
+  width: 50px;
+  height: 50px;
+  background-image: url("../loader.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */

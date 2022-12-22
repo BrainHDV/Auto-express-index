@@ -3,47 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>DRINKS_AJAX_STORAGE</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <style>
-      * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background-color: #eee;
-        text-align: center;
-        padding: 20px;
-      }
-
-      .drinks {
-        display: flex;
-        flex-direction: column;
-      }
-
-      [class^="drink_"] {
-        max-width: 500px;
-        font-size: 25px;
-        flex-basis: 90px;
-
-        border: 2px solid #000;
-        border-radius: 10px;
-        cursor: pointer;
-
-        transition: 0.3s linear;
-      }
-
-      [class^="drink_"]:hover {
-        background-color: rgba(0, 0, 0, 0.2);
-      }
-
-      [class^="drink_"]:not(:last-child) {
-        margin-bottom: 30px;
-      }
-    </style>
-
+    <div class="loading"></div>
     <div class="drinks">
       <input
         class="drink_button"
